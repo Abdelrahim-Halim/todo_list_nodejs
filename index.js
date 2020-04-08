@@ -1,4 +1,5 @@
 const fs = require('fs');
+const helper = require('./helpers')
 
 function parseCmdArgs(args) {
     const [, , command, ...opthions] = args;
@@ -13,19 +14,19 @@ function parseCmdArgs(args) {
 
 function main(cmdArgs) {
     const parseArgs = parseCmdArgs(cmdArgs);
-
+    helper.createIfNotExists('./todo.json')
     switch (parseArgs.command) {
         case 'add':
-            add(parseArgs)
+            helper.add(parseArgs)
             break;
         case 'edit':
-            edit(parseArgs)
+            helper.edit(parseArgs)
             break;
-        case 'delete':
-            delete(parseArgs)
+        case 'remove':
+            helper.remove(parseArgs)
             break;
         case 'list':
-            list(parseArgs)
+            helper.list(parseArgs)
             break;
         
         default:
