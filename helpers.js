@@ -2,7 +2,7 @@ const fs = require('fs')
 let todos = [];
 const fileName = './todo.json'
 
-function parseCmdArgs(args) {
+exports.parseCmdArgs = function (args) {
     const [, , command, ...opthions] = args;
     const parseOptions = opthions.reduce((cum, elm) => {
         const [opthionName, opthionValue] = elm.split('=');
